@@ -12,6 +12,7 @@
     h2 {
         margin-top: 60px;
     }
+    }
     .buttons {display: grid;
     grid-template-columns: 1fr 1fr 1fr}
     #rock {grid-column: 1/1}

@@ -1,13 +1,19 @@
-
 let tie = "It's a tie!"
 let win = "You won because the computer played "
 let loss = "You lost because the computer played "
 let scoreHuman = 0
 let scoreComputer = 0
+let rockbtn = document.querySelector("#rock")
+let paperbtn = document.querySelector("#paper")
+let scissorsbtn = document.querySelector("#scissors")
+rockbtn.addEventListener("click", function() { playerSelection = "rock";
+game()});
+paperbtn.addEventListener("click", function() { playerSelection = "paper";
+game()});
+scissorsbtn.addEventListener("click", function() { playerSelection = "scissors";
+game()});
 /* Function for one round of the game */
 function game() {
-    /* Player Choice */
-    let playerSelection = prompt("Rock, paper or scissors").toLowerCase()
     /* choose computer choice */
     function computerPlay() {
         let rand = Math.floor(Math.random() * 3);
@@ -21,53 +27,50 @@ function game() {
                 return "scissors"
             }
         }
-        let computerResult = computerPlay()
+        let computerResult = computerPlay();
+        document.getElementById("choice").innerText = computerResult
+        console.log(document.getElementById("choice").value)
         /* Tests to see who wins the round */
     if (playerSelection == "rock" && computerResult != "rock") {
         if (computerResult == "paper") {
             scoreComputer++
-            alert(loss + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer)
+            document.getElementById("results").innerText = loss + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer
         }
         if (computerResult == "scissors") {
             scoreHuman++
-            alert(win + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer)
+            document.getElementById("results").innerText = win + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer
         }
     }
     else if (playerSelection == "paper" && computerResult != "paper") {
         if (computerResult == "rock") {
             scoreHuman++
-            alert(win + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer)
+            document.getElementById("results").innerText = win + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer
         }
         if (computerResult == "scissors") {
             scoreComputer++
-            alert(loss + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer)
+            document.getElementById("results").innerText = loss + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer
         }
     }
     else if (playerSelection == "scissors" && computerResult != "scissors") {
         if (computerResult == "rock") {
             scoreComputer++
-            alert(loss + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer)
+            document.getElementById("results").innerText = loss + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer
         }
         if (computerResult == "paper") {
             scoreHuman++
-            alert(win + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer)
+            document.getElementById("results").innerText = win + computerResult + ". Your score: " + scoreHuman + ", Computer Score: " + scoreComputer
         }
     }
     else {
-        alert(tie + " Your score: " + scoreHuman + ", Computer score: " + scoreComputer)
+        document.getElementById("results").innerText = tie + " Your score: " + scoreHuman + ", Computer score: " + scoreComputer
     }
-}
-/* Loop for 5 rounds */
-for (i = 0; i < 5; i++) {
-game()
-}
-if (scoreHuman > scoreComputer) {
+    if (scoreHuman > scoreComputer) {
     var winner = ". You won!"
 }
 else if (scoreHuman < scoreComputer) {
     var winner = ". The computer won."
 }
-else {
-    var winner = ". The game was a tie."
+if (scoreComputer == 5 || scoreHuman == 5) {
+alert(`The game is finished. Your score was ${scoreHuman} and the computer's score was ${scoreComputer} ${winner}.`)
+location.reload()}
 }
-alert(`The game is finished. Your score was ${scoreHuman} and the computer's score was ${scoreComputer} ${winner}. Refresh to play again.`)

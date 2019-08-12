@@ -1,0 +1,35 @@
+.content {text-align: center;
+    font-family: "Open Sans";
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%; 
+    height: 100vh;
+    background:whitesmoke}
+    body {
+        margin: 0;
+        background: #241663;
+    }
+    h2 {
+        margin-top: 60px;
+    }
+    .buttons {display: grid;
+    grid-template-columns: 1fr 1fr 1fr}
+    #rock {grid-column: 1/1}
+    #paper {grid-column: 2 /2}
+    #scissors {grid-column: 3 / 3}
+    button:hover {opacity: 1;}
+    button {
+        background: #35b0ab;
+        font-family: "Roboto", sans-serif;
+        font-size: 20px;
+        opacity: 0.8;
+        color: white;
+        border: none;
+        margin: 5px;
+        padding: 4px 7px 4px 7px;
+    }
+    h1 {font-family: 'Roboto', sans-serif}
+    #results {
+        background: none;
+        color: black;
+    }
